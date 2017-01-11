@@ -1,9 +1,58 @@
-{% extends "admin/base.html" %}
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<title>{% block title %}{% endblock title %}</title>
+    	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-theme.min.css' %}">
+    	<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript" charset="utf-8" async defer></script>
+    	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js" charset="utf-8"></script>
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
 
-{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+          <!-- Static navbar -->
+          <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Project name</a>
+              </div>
+              <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                  <li class="{% block activeIndex %}{% endblock activeIndex %}"><a href="{% url 'polls:index' %}">Index</a></li>
+                  <li class="{% block activeDetail %}{% endblock activeDetail %}"><a href="">Detail</a></li>
+                  <li class="{% block activeResult %}{% endblock activeResult %}"><a href="">Result</a></li>
+                </ul>
+              </div><!--/.nav-collapse -->
+            </div><!--/.container-fluid -->
+          </nav>
 
-{% block branding %}
-<h1 id="site-name"><a href="{% url 'admin:index' %}">Blog Django</a></h1>
-{% endblock %}
+          <!-- Main component for a primary marketing message or call to action -->
+          <div class="jumbotron">
+              <div class="page-header">
+                  <h3><a href="{% url 'polls:index' %}">Django</a></h3>
+              </div>
+              <div class="content container">
+                  <div class="row">
+                      <div class="col-md-8">
+                          {% block content %}
+                          {% endblock %}
+                      </div>
+                  </div>
+              </div>
+          </div>
 
-{% block nav-global %}{% endblock %}
+        </div> <!-- /container -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    </body>
+</html>

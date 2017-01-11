@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Result</title>
-	<link rel="stylesheet" href="">
-</head>
-<body>
+{% extends 'admin/base_site.html' %}
+
+{% block title %}Result{% endblock title %}
+{% block activeResult %}active{% endblock activeResult %}
+
+{% block content %}
 	<h1>{{ question.question_text }}</h1>
 
 	<ul>
@@ -16,5 +13,4 @@
 	</ul>
 
 	<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
-</body>
-</html>
+{% endblock content %}
