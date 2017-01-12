@@ -1,0 +1,26 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}Inserción{% endblock title %}
+{% block activeHecho %}active{% endblock activeHecho %}
+
+{% block content %}
+	<h1>{{ question.question_text }}</h1>
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+    <form class="form-horizontal" action="{% url 'polls:termino' %}" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="form-group">
+                <label for="inputName" class="control-label col-xs-2">New Choice:</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" placeholder="Choice" id="dato">
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" name="button">Añadir</button>
+    </form>
+{% endblock content %}
+
+    {# <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />#}

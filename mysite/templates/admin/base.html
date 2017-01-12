@@ -29,6 +29,7 @@
               <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                   <li class="{% block activeIndex %}{% endblock activeIndex %}"><a href="{% url 'polls:index' %}">Index</a></li>
+                  <li class="{% block activeForm %}{% endblock activeForm %}"><a href="{% url 'polls:formulario' %}">Formulario</a></li>
                   <li class="{% block activeDetail %}{% endblock activeDetail %}"><a href="">Detail</a></li>
                   <li class="{% block activeResult %}{% endblock activeResult %}"><a href="">Result</a></li>
                 </ul>
