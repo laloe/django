@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 
-from .models import Choice, Question
+from .models import Choice, Question, Libro
 
 
 # def index(request):
@@ -71,8 +71,8 @@ def insercion(request):
 
 def termino(request):
     try:
-        selected_choice = request.POST['fecha']
-    except (KeyError, Choice.DoesNotExist):
+        Libro.objects.create(titulo=request.POST['titulo'], nombre_autor=request.POST['autor'], unidad=request.POST['unidad'], precio=request.POST['precio'], estado=request.POST['estado'], fecha=request.POST['fecha'])
+    except (KeyError, Libro.DoesNotExist):
         return render(request, 'polls/insercion.html', {
 
         })
