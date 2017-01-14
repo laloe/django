@@ -10,17 +10,19 @@
 
     <form class="form-horizontal" action="{% url 'polls:termino' %}" method="post">
         {% csrf_token %}
-        <div class="row">
-            <div class="form-group">
-                <label for="inputName" class="control-label col-xs-2">New Choice:</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" placeholder="Choice" id="dato">
-                </div>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary" name="button">Añadir</button>
+		<div class="col-xs-6" data-wow-delay=".5s">
+			<input type="text" name="titulo" id="titulo" required="required" class="form" placeholder="Titulo" />
+			<input type="text" name="autor" id="autor" required="required" class="form" placeholder="Autor" />
+			<input type="number" name="unidad" id="unidad" required="required" class="form" placeholder="Unidad" />
+			<input type="number" name="precio" id="precio" required="required" class="form" placeholder="Precio" />
+			<input type="text" name="estado" id="estado" required="required" class="form" placeholder="Estado" />
+			<input type="date" name="fecha" id="fecha" required="required" class="form" placeholder="Fecha" />
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-xs-6" data-wow-delay=".5s">
+				<button type="submit" class="btn btn-primary" name="button">Añadir</button>
+			</div>
+		</div>
     </form>
 {% endblock content %}
-
-    {# <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />#}

@@ -3,13 +3,35 @@
 {% block title %}Formulario{% endblock title %}
 {% block activeForm %}active{% endblock activeForm %}
 {% block content %}
-{% if latest_question_list %}
-<ul>
-    {% for question in latest_question_list %}
-        <li style="font-size: 18px;"><a href="{% url 'polls:insercion' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
-</ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+<div ng-app="app" ng-controller="primero as ctrl">
+    {% if latest_question_list %}
+    <ul>
+        {% for question in latest_question_list %}
+            <li style="font-size: 18px;"><a href="{% url 'polls:insercion' question.id %}">{{ question.question_text }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+    <script>
+        angular
+            .module('app', [])
+            .controller('primero', primero)
+            .config(confApp);
+
+            function confApp ($interpolateProvider,$httpProvider) {
+                $interpolateProvider.startSymbol('[[');
+                $interpolateProvider.endSymbol(']]');
+              	$httpProvider.defaults.xsrfCookieName = 'csrftoken';
+             	$httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+            }
+
+            function primero()
+            {
+                var vm = this;
+                vm.num1 = 0;
+                vm.num2 = 0;
+            }
+    </script>
+</div>
 {% endblock content %}
