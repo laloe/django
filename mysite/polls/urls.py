@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
     url(r'^formulario/$', views.formularioView.as_view(), name='formulario'),
     url(r'^insercion/$', views.insercion, name='insercion'),
+    url(r'^borrar/$', views.borrar, name='borrar'),
     url(r'^termino/$', views.termino, name='termino'),
 ]

@@ -69,12 +69,19 @@ def insercion(request):
     return render(request, 'polls/insercion.html', {})
 
 
+def borrar(request):
+    try:
+        return Libro.objects.all().order_by('titulo')
+    except (KeyError, Libro.DoesNotExist):
+        return render(request, 'polls/insercion.html', {})
+    else:
+        return HttpResponseRedirect(reverse('polls:termino'))
+
+
 def termino(request):
     try:
         Libro.objects.create(titulo=request.POST['titulo'], nombre_autor=request.POST['autor'], unidad=request.POST['unidad'], precio=request.POST['precio'], estado=request.POST['estado'], fecha=request.POST['fecha'])
     except (KeyError, Libro.DoesNotExist):
-        return render(request, 'polls/insercion.html', {
-
-        })
+        return render(request, 'polls/insercion.html', {})
     else:
-        return HttpResponseRedirect(reverse('polls:insercion'))
+        return HttpResponseRedirect(reverse('polls:termino'))
